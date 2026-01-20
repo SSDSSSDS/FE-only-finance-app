@@ -1,17 +1,13 @@
 import type { CategoryType } from "./type.js";
+import "./CategoryComponent.scss";
 
-const CategoryComponent = ({ 
-    id, 
-    label, 
-    budget, 
-}: CategoryType) => {
-
-    return (
-        <>
-        <p>{label}</p>
-        <p>{budget}</p> 
-        </>
-    );
+const CategoryComponent = ({ label, budget }: CategoryType) => {
+  return (
+    <div className="category">
+      <div className="category__label">{label}</div>
+      <div className="category__budget">{budget}€</div>
+    </div>
+  );
 };
 
 export default CategoryComponent;

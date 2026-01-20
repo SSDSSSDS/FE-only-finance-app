@@ -1,0 +1,13 @@
+.category {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.category__label {
+  font-weight: 600;
+}
+
+.category__budget {
+  color: var(--accent-300);
+  font-variant-numeric: tabular-nums;
+}
