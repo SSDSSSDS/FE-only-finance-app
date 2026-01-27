@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CategorySetup from "./components/Category/CategoryComponent.js";
 import ManageCategoriesFeature from "./features/ManageCategories/ManageCategoriesFeature.js";
+import ManageIncomeFeature from "./features/ManageIncome/ManageIncomeFeature.js";
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <>
     <h1></h1>
     <ManageCategoriesFeature></ManageCategoriesFeature>
+    <ManageIncomeFeature></ManageIncomeFeature>
     </>
   );
 }

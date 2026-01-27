@@ -1,5 +1,6 @@
 export type CategoryType = {
-    id: string;
-    label: string;
-    budget: number | undefined;
+  id: string;
+  label: string;
+  budget: number | undefined;
+  basket?: string;
 }
