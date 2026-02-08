@@ -9,8 +9,8 @@ function App() {
   return (
     <>
     <h1></h1>
-    <ManageCategoriesFeature></ManageCategoriesFeature>
-    <ManageIncomeFeature></ManageIncomeFeature>
+    {/* <ManageCategoriesFeature></ManageCategoriesFeature> */}
+    {/* <ManageIncomeFeature></ManageIncomeFeature> */}
     </>
   );
 }

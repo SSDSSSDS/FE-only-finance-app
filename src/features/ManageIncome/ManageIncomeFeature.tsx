@@ -3,7 +3,22 @@ import type { BonusType } from "../../components/Income/type.js";
 import IncomeComponent from "../../components/Income/IncomeComponent.js";
 import "./ManageIncome.scss"
 
-const ManageIncomeFeature: React.FC = () => {
+type IncomeType = {
+  bonus: BonusType | null;
+  salary: number;
+  sideHustle: number;
+}
+
+type ManageIncomeFeatureType = {
+  income: IncomeType;
+  onChangeIncome: (value: IncomeType) => void;
+}
+
+const ManageIncomeFeature = ({
+  income,
+  onChangeIncome
+}: ManageIncomeFeatureType) => {
+  
   const [salary, setSalary] = useState<number | "">("");
   const [sideHustle, setSideHustle] = useState<number | "">("");
   const [bonus, setBonus] = useState<BonusType | null>(null);
