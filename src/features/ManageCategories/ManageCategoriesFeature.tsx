@@ -1,27 +1,35 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import CategoryComponent from "../../components/Category/CategoryComponent.js"
 import type { CategoryType } from "../../components/Category/type.js";
 import "./ManageCategoriesFeature.scss"
 
-const ManageCategoriesFeature: React.FC = () => {
+type ManageCategoriesFeatureType = {
+	categories: CategoryType[];
+	onChangeCategories: (cats: CategoryType[]) => void; //(value: React.SetStateAction<CategoryType[]>) => void
+}
 
-	const [categories, setCategories] = useState<CategoryType[]>([{ id: "1", label: "1", budget: 100, basket: "Fun" }, { id: "2", label: "2", budget: 300 }]);
-	const options = ["Fun", "Essential", "Self-improvement", "Future you"]
+const ManageCategoriesFeature = ({
+	categories,
+	onChangeCategories
+}: ManageCategoriesFeatureType) => {
+
+	categories = ([{ id: "1", label: "1", budget: 100, basket: "Fun" }, { id: "2", label: "2", budget: 300 }]);
+	const options = ["Fundamentals", "Fun", "Future you"]
 
 	const [label, setLabel] = useState<string>("");
 	const [budget, setBudget] = useState<number | "">("");
-	const [basket, setBasket] = useState<string | "" >("");
+	const [basket, setBasket] = useState<string | "">("");
 
 	const AddCategory = () => {
 		const trimmed = label.trim();
 		if (trimmed === "" || budget === "") return;
-		setCategories([...categories, { label: label, budget: budget, basket: basket, id: crypto.randomUUID() }])
+		onChangeCategories([...categories, { label: label, budget: budget, basket: basket, id: crypto.randomUUID() }])
 		setLabel("")
 		setBudget("")
 	}
 
 	const DeleteCategory = (e: string) => {
-		setCategories((all) => all.filter((cat) => cat.id !== e))
+		onChangeCategories(categories.filter((cat) => cat.id !== e))
 	}
 
 	return (
@@ -41,22 +49,20 @@ const ManageCategoriesFeature: React.FC = () => {
 					name="budget"
 					value={budget}
 					placeholder="Budget"
-					onChange={(e) =>
-						setBudget(e.target.value === "" ? "" : Number(e.target.value))
-					}
+					onChange={(e) => setBudget(e.target.value === "" ? "" : Number(e.target.value))}
 				/>
 				<label>
-					Category  
-					<select 
-					name="selectedFruit"
-					value={basket}
+					Category
+					<select
+						name="selectedFruit"
+						value={basket}
+						onChange={(e) => setBasket(e.target.value)}
 					>
-						{options.map((op) => 
-						<option>{op}</option>
+						{options.map((op) =>
+							<option>{op}</option>
 						)}
 					</select>
 				</label>
-
 				<button onClick={AddCategory}>Add category</button>
 			</div>
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { BonusType } from "../../components/Income/type.js";
 import IncomeComponent from "../../components/Income/IncomeComponent.js";
+import "./ManageIncome.scss"
 
 const ManageIncomeFeature: React.FC = () => {
   const [salary, setSalary] = useState<number | "">("");
@@ -31,49 +32,53 @@ const ManageIncomeFeature: React.FC = () => {
   if (!isSubmitted) {
     return (
       <>
-        <input
-          type="number"
-          value={salary}
-          placeholder="input salary here"
-          onChange={(e) => setSalary(e.target.value === "" ? "" : Number(e.target.value))}
-        />
+        <div className="ManageIncomeFeature">
+          <input
+            type="number"
+            value={salary}
+            placeholder="input salary here"
+            onChange={(e) => setSalary(e.target.value === "" ? "" : Number(e.target.value))}
+          />
 
-        <input
-          type="number"
-          value={sideHustle}
-          placeholder="input side hustle earnings"
-          onChange={(e) => setSideHustle(e.target.value === "" ? "" : Number(e.target.value))}
-        />
+          <input
+            type="number"
+            value={sideHustle}
+            placeholder="input side hustle earnings"
+            onChange={(e) => setSideHustle(e.target.value === "" ? "" : Number(e.target.value))}
+          />
 
-        <p>Bonus:</p>
+          <p>Bonus:</p>
 
-        <input
-          type="text"
-          value={bonusLabel}
-          placeholder="bonus label"
-          onChange={(e) => setBonusLabel(e.target.value)}
-        />
+          <input
+            type="text"
+            value={bonusLabel}
+            placeholder="bonus label"
+            onChange={(e) => setBonusLabel(e.target.value)}
+          />
 
-        <input
-          type="number"
-          value={bonusAmount}
-          placeholder="bonus amount"
-          onChange={(e) => setBonusAmount(e.target.value === "" ? "" : Number(e.target.value))}
-        />
+          <input
+            type="number"
+            value={bonusAmount}
+            placeholder="bonus amount"
+            onChange={(e) => setBonusAmount(e.target.value === "" ? "" : Number(e.target.value))}
+          />
 
-        <button onClick={handleSubmit}>submit</button>
+          <button onClick={handleSubmit}>submit</button>
+        </div>
       </>
     );
   }
 
   return (
     <>
-      <IncomeComponent
-        salary={Number(salary)}
-        sideHustle={Number(sideHustle)}
-        bonus={bonus}
-      />
-      <button onClick={handleEdit}>edit</button>
+      <div className="ManageIncomeFeature">
+        <IncomeComponent
+          salary={Number(salary)}
+          sideHustle={Number(sideHustle)}
+          bonus={bonus}
+        />
+        <button onClick={handleEdit}>edit</button>
+      </div>
     </>
   );
 };
